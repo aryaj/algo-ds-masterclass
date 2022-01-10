@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // function validAnagram(string1,string2){
+
+      //     let arr1 = string1.split('');
+      //     let arr2 = string2.split('');
+
+      //     if(arr1.length != arr2.length){
+      //         return false;
+      //     }
+      //     let frequencyCounter1 = {};
+      //     let frequencyCounter2 = {};
+
+      //     for(let val of arr1){
+      //         frequencyCounter1[val] = (frequencyCounter1[val] || 0) + 1;
+      //     }
+
+      //     for(let val of arr2){
+      //         frequencyCounter2[val] = (frequencyCounter2[val] || 0) + 1;
+      //     }
+
+      //     for(key in frequencyCounter1){
+      //         if(!(key in frequencyCounter2)){
+      //             return false;
+      //         }
+      //        if(frequencyCounter1[key] !== (frequencyCounter2[key])){
+      //             return false;
+      //        }
+      //     }
+      //     return true;
+      // }
+
+      function validAnagram(string1, string2) {
+        // console.log(validAnagram('aazd','zada'));
+        let lookup = {};
+
+        for (let val of string1) {
+          lookup[val] ? (lookup[val] += 1) : (lookup[val] = 1);
+        }
+        console.log(lookup);
+        for (let i = 0; i < string2.length; i++) {
+          let letter = string2[i];
+          console.log(letter);
+          if (!lookup[letter]) {
+            return false;
+          } else {
+            lookup[letter] -= 1;
+          }
+        }
+        return true;
+      }
+
+      console.log(validAnagram("aazd", "zada"));
+    </script>
+  </body>
+</html>
